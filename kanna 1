@@ -1,0 +1,16 @@
+#include <stdio.h>
+
+// Assuming page_table is an array where index is page number and value is frame number
+// int page_table[MAX_PAGES]; 
+// int page_size;
+
+int get_physical_address(int logical_page_no, int offset) {
+    if (page_table[logical_page_no] == -1) {
+        printf("Error: Page not found in memory (Page Fault).\n");
+        return -1; // Indicate an error or page fault
+    } else {
+        int physical_frame_no = page_table[logical_page_no];
+        int physical_address = (physical_frame_no * page_size) + offset;
+        return physical_address;
+    }
+}
