@@ -70,3 +70,15 @@ int main()
     findavgTime(processes, n,  burst_time);
     return 0;
 }
+
+// Function to find the waiting time for all 
+// processes
+void findWaitingTime(int processes[], int n, 
+                          int bt[], int wt[])
+{
+    // waiting time for first process is 0
+    wt[0] = 0;
+
+    // calculating waiting time
+    for (int  i = 1; i < n ; i++ )
+        wt[i] =  bt[i-1] + wt[i-1] ;
